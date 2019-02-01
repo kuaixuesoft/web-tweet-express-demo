@@ -1,0 +1,28 @@
+{
+  "name": "web-tweet-express-demo",
+  "version": "1.0.0",
+  "description": "web-tweet-express-demo",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuaixuesoft/web-tweet-express-demo.git"
+  },
+  "keywords": [
+    "web",
+    "tweet",
+    "express",
+    "nodejs"
+  ],
+  "author": "james",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuaixuesoft/web-tweet-express-demo/issues"
+  },
+  "homepage": "https://github.com/kuaixuesoft/web-tweet-express-demo#readme"
+}
