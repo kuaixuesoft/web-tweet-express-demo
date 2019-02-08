@@ -5,6 +5,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 /**
  * middleware
  * note: middleware is running in sequence, from top to bottom
@@ -17,11 +21,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.get('/', (req, res) => res.send('Hello World!'));
 
-app.get('/', (req,res)=> {
-    res.sendFile(path.join(__dirname,'index.html'))
-})
+// app.get('/', (req,res)=> {
+//     res.sendFile(path.join(__dirname,'index.html'))
+// })
 
-console.log("hahaha reboot");
+app.get('/', (req,res)=>{ res.render('index', {title:"welcome to webdxd !"})} );
+
+app.get('/login', (req,res)=>{ res.render('login')} );
+
+app.get('/signup', (req,res)=>{res.render('signup')}  );
+
+app.get('/profile', (req,res)=>{res.render('profile')}  );
+
+app.get('/profile/edit', (req,res)=>{res.render('editProfile')}  );
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
