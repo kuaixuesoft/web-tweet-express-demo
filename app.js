@@ -26,35 +26,39 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev')); // log requests in server console
-
+/**
+ * you need to use session middleware to create session store
+ * if you want to use passport session
+*/
 app.use(session({
   secret: 'webdxd',
   resave: false,
   saveUninitialized: false,
-  cookie: {secure: false}
+  cookie: { secure: false } // only set this to true if you are in HTTPS connection
 }));
 
 app.use(passport.initialize());
-app.use(passport.session())
+app.use(passport.session());
 
+// passport config
 require('./passport');
-
+/**
+ * set local variables, so you can use it in template engine
+ */
 app.locals.moment = require('moment');
 
-app.use((req, res, next)=>{
+/** custom middleware automatically adding user into templates */
+app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
-})
+});
 
-app.use((req,res,next)=>{
-  Tweets.find({},(err,tweets)=>{
+app.use((req, res, next) => {
+  Tweets.find({}, (err, tweets) => {
     res.locals.tweets = tweets;
     next();
   })
 })
-
-
-
 // import routers
 const index = require('./routes/index');
 const profile = require('./routes/profile');

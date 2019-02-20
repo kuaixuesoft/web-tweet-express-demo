@@ -1,42 +1,32 @@
 {
-  "name": "web-tweet-express-demo",
+  "name": "web-tweet-express",
   "version": "1.0.0",
-  "description": "web-tweet-express-demo",
+  "description": "A twitter like web application.",
   "main": "app.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "start": "nodemon app"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kuaixuesoft/web-tweet-express-demo.git"
+    "url": "git+https://github.com/webdxd/web-tweet-express.git"
   },
-  "keywords": [
-    "web",
-    "tweet",
-    "express",
-    "nodejs"
-  ],
-  "author": "james",
+  "author": "Michael Chen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kuaixuesoft/web-tweet-express-demo/issues"
+    "url": "https://github.com/webdxd/web-tweet-express/issues"
   },
-  "homepage": "https://github.com/kuaixuesoft/web-tweet-express-demo#readme",
+  "homepage": "https://github.com/webdxd/web-tweet-express#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
-    "express": "^4.16.4",
+    "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "moment": "^2.24.0",
-    "mongoose": "^5.4.12",
-    "morgan": "^1.9.1",
+    "moment": "^2.22.1",
+    "mongoose": "^5.0.17",
+    "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1",
-    "pug": "^2.0.3",
-    "save": "^2.3.3"
+    "passport-local-mongoose": "^5.0.0",
+    "pug": "^2.0.3"
   }
 }
