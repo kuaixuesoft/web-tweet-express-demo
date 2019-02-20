@@ -4,6 +4,10 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+// connect mongoDB
+mongoose.connect('mongodb://localhost:27017/webdxd');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -13,28 +17,21 @@ app.set('view engine', 'pug');
  * middleware
  * note: middleware is running in sequence, from top to bottom
  */
-app.use(logger('dev')); // log requests in server console
 app.use(bodyParser.json()); // parse client request data to json format
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev')); // log requests in server console
 
-// app.get('/', (req, res) => res.send('Hello World!'));
+app.locals.moment = require('moment');
 
-// app.get('/', (req,res)=> {
-//     res.sendFile(path.join(__dirname,'index.html'))
-// })
+// import routers
+const index = require('./routes/index');
+const profile = require('./routes/profile');
 
-app.get('/', (req,res)=>{ res.render('index', {title:"welcome to webdxd !"})} );
-
-app.get('/login', (req,res)=>{ res.render('login')} );
-
-app.get('/signup', (req,res)=>{res.render('signup')}  );
-
-app.get('/profile', (req,res)=>{res.render('profile')}  );
-
-app.get('/profile/edit', (req,res)=>{res.render('editProfile')}  );
-
+// apply router middleware
+app.use('/', index);
+app.use('/profile', profile);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -45,7 +42,6 @@ app.use((req, res, next) => {
 
 // error handler
 app.use((err, req, res, next)=> {
-  //res.status(404);
   res.send(err.message);
 });
 
