@@ -26,17 +26,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev')); // log requests in server console
 
 app.use(session({
-  
-
+  secret: 'webdxd',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {secure: false}
 }));
 
+app.use(passport.initialize());
+app.use(passport.session())
 
-
-
-
-
+require('./passport');
 
 app.locals.moment = require('moment');
+
+app.use((req, res, next)=>{
+  res.locals.user = req.user;
+  next();
+})
 
 // import routers
 const index = require('./routes/index');

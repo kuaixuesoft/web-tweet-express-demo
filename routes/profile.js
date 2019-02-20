@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const tweets = require('../tweets')
 
-router.get('/', (req,res)=>{
-    res.render('profile');
-})
+const tweets = require('../tweets');
+const utils = require('../utils');
 
-router.get('/edit', (req,res)=>{
-    res.render('editProfile');
-})
+router.get('/', utils.requireLogin, (req, res) => {
+  res.render('profile');
+});
+
+router.get('/edit', utils.requireLogin, (req, res) => {
+  res.render('editProfile');
+});
 
 module.exports = router;
