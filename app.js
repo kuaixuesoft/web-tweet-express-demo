@@ -5,6 +5,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
 
 // connect mongoDB
 mongoose.connect('mongodb://localhost:27017/webdxd');
@@ -22,6 +24,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev')); // log requests in server console
+
+app.use(session({
+  
+
+}));
+
+
+
+
+
+
 
 app.locals.moment = require('moment');
 
