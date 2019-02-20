@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 
+const Tweets = require('./models/tweets');
+
 // connect mongoDB
 mongoose.connect('mongodb://localhost:27017/webdxd');
 
@@ -43,6 +45,15 @@ app.use((req, res, next)=>{
   res.locals.user = req.user;
   next();
 })
+
+app.use((req,res,next)=>{
+  Tweets.find({},(err,tweets)=>{
+    res.locals.tweets = tweets;
+    next();
+  })
+})
+
+
 
 // import routers
 const index = require('./routes/index');
