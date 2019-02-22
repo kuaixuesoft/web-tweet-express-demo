@@ -11,7 +11,8 @@ const session = require('express-session');
 const Tweets = require('./models/tweets');
 
 // connect mongoDB
-mongoose.connect('mongodb://localhost:27017/webdxd');
+// mongoose.connect('mongodb://localhost:27017/webdxd');
+mongoose.connect('mongodb://james2:james1234@ds021166.mlab.com:21166/webdex');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
